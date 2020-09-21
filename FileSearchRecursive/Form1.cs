@@ -80,7 +80,7 @@ namespace FileSearchRecursive
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             string line;
             int elements;
@@ -112,17 +112,33 @@ namespace FileSearchRecursive
                 if (trouve)
                 {
                     Console.WriteLine(curfile);
-                    nbtrouve = nbtrouve + 1;
+                    nbtrouve += 1;
                 }
                 else
                 {
                     Console.WriteLine("Not found");
-                    nbnottrouve = nbnottrouve + 1;
+                    nbnottrouve += 1;
                 }
 
             }
             Console.WriteLine("FIN " + nbtrouve.ToString());
             Console.WriteLine("FIN " + nbnottrouve.ToString());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string filename = "azertyazerty.txt";
+            if (File.Exists(filename))
+            {
+                File.Delete(filename);
+            }
+            StreamWriter savefile = new StreamWriter(filename);
+            foreach (string item in listBox1.Items)
+            {
+                savefile.WriteLine(item.ToString());
+            }
+            savefile.Close();
+
         }
     }
 }
