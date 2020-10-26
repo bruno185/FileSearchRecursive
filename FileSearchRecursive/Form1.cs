@@ -33,13 +33,15 @@ namespace FileSearchRecursive
             listBox1.HorizontalScrollbar = true;
 
             DirSearch2(textBox2.Text);
-            System.Console.WriteLine(listBox1.Items[0]);
+            int cnt = listBox1.Items.Count;
+            listBox1.Items.Add("--- "+cnt.ToString()+ " élément(s) trouvé(s) ---");
+
 
         }
 
         void DirSearch(string sDir)
         // https://docs.microsoft.com/fr-fr/dotnet/api/system.io.file.exists?view=netcore-3.1
-        // pas mal mais ne charche pas dans le répertiore de départ.
+        // pas mal mais ne cherche pas dans le répertiore de départ.
         {
             try
             {
@@ -55,6 +57,7 @@ namespace FileSearchRecursive
             catch (System.Exception excpt)
             {
                 Console.WriteLine(excpt.Message);
+                MessageBox.Show(excpt.Message);
             }
         }
 
@@ -77,6 +80,7 @@ namespace FileSearchRecursive
             catch (System.Exception excpt)
             {
                 Console.WriteLine(excpt.Message);
+                MessageBox.Show(excpt.Message);
             }
         }
 
@@ -121,8 +125,8 @@ namespace FileSearchRecursive
                 }
 
             }
-            Console.WriteLine("FIN " + nbtrouve.ToString());
-            Console.WriteLine("FIN " + nbnottrouve.ToString());
+            Console.WriteLine("Found : " + nbtrouve.ToString());
+            Console.WriteLine("Not found : " + nbnottrouve.ToString());
         }
 
         private void button3_Click(object sender, EventArgs e)
